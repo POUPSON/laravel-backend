@@ -29,3 +29,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('users', UserController::class)->except(['show']);
     Route::get('/statistiques/evolution', [StatistiqueController::class, 'evolution']);
 });
+use App\Models\User;
+
+Route::get('/check-users', function () {
+    return response()->json([
+        'count' => User::count(),
+        'emails' => User::all()->pluck('email')
+    ]);
+});
