@@ -9,7 +9,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        return Article::with('sousCategorie')->paginate(15);
+        return Article::with('sousCategorie')->get();
     }
 
     public function store(Request $request)
